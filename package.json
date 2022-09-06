@@ -1,0 +1,27 @@
+{
+  "name": "sublimezvous",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dane8701/SublimezVous.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dane8701/SublimezVous/issues"
+  },
+  "homepage": "https://github.com/dane8701/SublimezVous#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4",
+    "mongoose-unique-validator": "^3.1.0",
+    "static": "^2.0.0"
+  }
+}
