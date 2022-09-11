@@ -1,4 +1,5 @@
 const Categorie = require('../models/Categorie');
+const Prestation = require('../models/Prestation');
 const fs = require('fs');
 
 exports.createCategorie = (req, res, next) => {
@@ -43,13 +44,13 @@ exports.deleteCategorie = (req, res, next) => {
 };
 
 exports.getOneCategorie = (req, res, next) => {
-  Categorie.findOne({ _id: req.params.id })
+  Categorie.findOne({ _id: req.params.id }).populate({path: "prestations"})
     .then( categorie => res.status(200).json(categorie))
     .catch(error => res.status(400).json({error}));
 };
 
 exports.getAllCategories = (req, res, next) => {
-  Categorie.find()
+  Categorie.find().populate({path: "prestations"})
   .then(news => res.status(200).json(news))
   .catch(error => res.status(400).json({error}));
 };

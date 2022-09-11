@@ -12,11 +12,11 @@ exports.createPrestation = (req, res, next) => {
         Categorie.updateMany({ '_id': prestation.categorie.toString() }, { $push: { prestations: prestation._id } })
         .then()
         .catch((err) => {
-          res.status(400).json({err})
+          res.status(400).json({"err": err})
         })
         res.status(201).json({message: 'Objet enregistré !'})
     })
-    .catch((error) => res.status(400).json({error}));
+    .catch((error) => res.status(400).json({"error": error}));
 };
 
 exports.modifyPrestation = (req, res, next) => {
