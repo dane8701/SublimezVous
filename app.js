@@ -5,10 +5,14 @@ const cors = require('cors');
 const path = require('path');
 
 //routes controllers
-// const userRoutes = require('./routes/user');
+const utilisateurRoutes = require('./routes/utilisateur');
+const avisRoutes = require('./routes/avis');
+const categorieRoutes = require('./routes/categorie');
+const prestationRoutes = require('./routes/prestation');
+const reservationRoutes = require('./routes/reservation');
 
 
-const DbServer = ""
+const DbServer = "mongodb+srv://sublimezvous:sublimezvous@cluster0.ncyo3zx.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(DbServer,
   { useNewUrlParser: true,
   useUnifiedTopology: true }
@@ -24,6 +28,10 @@ app.use(cors({origin: true, credentials: true}));
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-// app.use('/api/auth', userRoutes);
+app.use('/api/auth', utilisateurRoutes);
+app.use('/api/avis', avisRoutes);
+app.use('/api/categorie', categorieRoutes);
+app.use('/api/prestation', prestationRoutes);
+app.use('/api/reservation', reservationRoutes);
 
 module.exports = app;
