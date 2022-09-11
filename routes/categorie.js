@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
+const multer = require('../middleware/multer-config');
 const categorieCtrl = require('../controllers/categorie');
 
-router.post('/', categorieCtrl.createCategorie);
+router.post('/', multer, categorieCtrl.createCategorie);
 
-router.put('/:id', categorieCtrl.modifyCategorie);
+router.put('/', multer, categorieCtrl.modifyCategorie);
 
 router.delete('/:id', categorieCtrl.deleteCategorie);
 

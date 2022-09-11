@@ -4,13 +4,8 @@ const fs = require('fs');
 
 exports.createPrestation = (req, res, next) => {
     delete req.body._id;
-    let images = [];  
-    for (let file of req.files) {
-        images.push(`${req.protocol}://${req.get('host')}/images/${file.filename}`,)
-    }
     const prestation = new Prestation({
         ...req.body,
-        images: images
     });
     prestation.save()
     .then(() => {
@@ -25,10 +20,6 @@ exports.createPrestation = (req, res, next) => {
 };
 
 exports.modifyPrestation = (req, res, next) => {
-    let images = [];  
-    for (let file of req.files) {
-        images.push(`${req.protocol}://${req.get('host')}/images/${file.filename}`,)
-    }
     Prestation.updateOne({ _id: req.body.id}, { ...req.body, _id: req.body.id, images: images })
     .then(() => res.status(200).json({ message: 'Objet modifié !'}))
     .catch(error => res.status(400).json(error));

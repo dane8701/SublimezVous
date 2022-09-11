@@ -4,7 +4,8 @@ const fs = require('fs');
 exports.createCategorie = (req, res, next) => {
   delete req.body._id;
   const categorie = new Categorie({
-    ...req.body
+    ...req.body,
+    image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   categorie.save()
   .then(() => {
@@ -14,7 +15,12 @@ exports.createCategorie = (req, res, next) => {
 };
 
 exports.modifyCategorie = (req, res, next) => {
-    Categorie.updateOne({ _id: req.body.id}, { ...req.body, _id: req.body.id })
+    console.log(req.file)
+    const categorieObject = req.file ? {
+      ...req.body,
+      image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    } : { ...req.body };
+    Categorie.updateOne({ _id: req.body.id}, { ...categorieObject, _id: req.body.id })
     .then(() => res.status(200).json({ message: 'Objet modifié !'}))
     .catch(error => res.status(400).json(error));
 };

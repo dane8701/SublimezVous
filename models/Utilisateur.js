@@ -11,6 +11,7 @@ const userSchema = mongoose.Schema({
   code_postal: { type: Number },
   commune: { type: String },
   date_creation: { type: Date, required: true },
+  estAdmin: { type: Boolean, required: true, default: false },
   reservations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reservation', required: true }]
 });
 

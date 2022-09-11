@@ -5,7 +5,6 @@ const prestationSchema = mongoose.Schema({
     libelle: { type: String, unique: true },
     description: { type: String },
     prix: { type: String, required: true, unique: true },
-    images: [{ type: String, required: true, unique: true }],
     temps: { type: String, required: true },
     categorie: { type: mongoose.Schema.Types.ObjectId, ref: 'Categorie', required: true }
 });

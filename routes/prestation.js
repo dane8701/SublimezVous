@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('../middleware/multer-config');
 
 const prestationCtrl = require('../controllers/prestation');
 
 router.post('/', prestationCtrl.createPrestation);
 
-router.put('/', multer, prestationCtrl.modifyPrestation);
+router.put('/', prestationCtrl.modifyPrestation);
 
 router.delete('/:id', prestationCtrl.deletePrestation);
 
