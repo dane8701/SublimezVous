@@ -13,6 +13,7 @@ const reservationSchema = mongoose.Schema({
     prestations: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Prestation', required: true }]
 });
 
+//permet de faire un pre-enregistrement des champs unique
 reservationSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Reservation', reservationSchema);
