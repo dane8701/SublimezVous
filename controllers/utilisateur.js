@@ -54,3 +54,10 @@ exports.getAllUtilisateurs = (req, res, next) => {
     .then(utilisateurs => res.status(200).json(utilisateurs))
     .catch(error => res.status(400).json({error}));
 };
+
+exports.getOneUtilisateur = (req, res, next) => {
+  //findOne permet de trouver un objet dont _id = req.params.id
+  Utilisateur.findOne({ _id: req.params.id }).populate({path: "reservations"})
+    .then( utilisateur => res.status(200).json(utilisateur))
+    .catch(error => res.status(400).json({"error": error}));
+};

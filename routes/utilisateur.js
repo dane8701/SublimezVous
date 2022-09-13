@@ -8,5 +8,7 @@ router.post('/login', utilisateurCtrl.login);
 
 router.put('/', utilisateurCtrl.modifyUtilisateur);
 router.get('/', utilisateurCtrl.getAllUtilisateurs);
+router.get('/:id', utilisateurCtrl.getOneUtilisateur);
+
 
 module.exports = router;
