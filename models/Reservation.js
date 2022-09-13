@@ -5,6 +5,7 @@ const reservationSchema = mongoose.Schema({
     reference: { type: String, required: true, unique: true },
     message: { type: String },
     tva: { type: Number, required: true },
+    prixTotal: { type: Number, required: true },
     debut: { type: Date, required: true },
     raison_annulation: { type: String },
     date_creation: { type: Date, required: true },
