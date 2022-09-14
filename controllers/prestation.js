@@ -31,6 +31,7 @@ exports.modifyPrestation = (req, res, next) => {
 };
 
 exports.deletePrestation = (req, res, next) => {
+  // pour chercher l'objet prestation qu'on veut modifier 
   Prestation.findOne({_id: req.params.id})
     .then(
       (prestation) => {
@@ -49,12 +50,16 @@ exports.deletePrestation = (req, res, next) => {
 
 exports.getOnePrestation = (req, res, next) => {
   //findOne permet de trouver un objet dont _id = req.params.id
+  // populate nous permet de remplacer l'id de la catégorie 
+  // params nous permet de faire passer des valeurs
+
   Prestation.findOne({ _id: req.params.id }).populate({path: "categorie"})
     .then( prestation => res.status(200).json(prestation))
     .catch(error => res.status(400).json({error}));
 };
 
 exports.getAllPrestations = (req, res, next) => {
+  // on récupere toutes les prestations 
   Prestation.find().populate({path: "categorie"})
   .then(prestations => res.status(200).json(prestations))
   .catch(error => res.status(400).json({error}));
